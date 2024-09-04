@@ -3,12 +3,26 @@ using System.Collections.Generic;
 using System.Runtime;
 using UnityEngine;
 
+
+
+
+
+
+
 public class PlayerController : MonoBehaviour
 {
-    public bool overworld; 
+    float xspeed;
+    float xdirection;
+    float xvector;
+    public bool overworld;
+    Rigidbody2D rb;
 
     private void Start()
     {
+        xspeed = 4;
+        xdirection = 0;
+        xvector = 0;
+
         GetComponentInChildren<TopDown_AnimatorController>().enabled = overworld;
         GetComponentInChildren<Platformer_AnimatorController>().enabled = !overworld; //what do you think ! means?
         
@@ -25,7 +39,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        
+        xdirection = Input.GetAxis("Horizontal");
+        xvector = xspeed * xdirection;
+
+        //working 
+        transform.position = transform.position + new Vector3(xvector,0);
     }
     
     //for organization, put other built-in Unity functions here
