@@ -14,14 +14,23 @@ public class PlayerController : MonoBehaviour
     float xspeed;
     float xdirection;
     float xvector;
+
+    float yspeed;
+    float ydirection;
+    float yvector;
+
     public bool overworld;
     Rigidbody2D rb;
 
     private void Start()
     {
-        xspeed = 4;
+        xspeed = 4f;
         xdirection = 0;
         xvector = 0;
+
+        yspeed = 4f;
+        ydirection = 0;
+        yvector = 0;
 
         GetComponentInChildren<TopDown_AnimatorController>().enabled = overworld;
         GetComponentInChildren<Platformer_AnimatorController>().enabled = !overworld; //what do you think ! means?
@@ -42,8 +51,13 @@ public class PlayerController : MonoBehaviour
         xdirection = Input.GetAxis("Horizontal");
         xvector = xspeed * xdirection;
 
+        ydirection = Input.GetAxis("Vertical");
+        yvector = yspeed * ydirection;
+
         //working 
-        transform.position = transform.position + new Vector3(xvector,0);
+        transform.Translate(Time.deltaTime * xvector, Time.deltaTime * yvector, 0);
+
+       
     }
     
     //for organization, put other built-in Unity functions here
