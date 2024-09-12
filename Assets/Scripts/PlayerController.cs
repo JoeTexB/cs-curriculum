@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("coin")) ; //shouldn't work?????
+        if (other.CompareTag("coin")) ; //shouldn't work??????
         {
             coins = coins + 1;
             print("I have " + coins + " Coins!");
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("collision"))
         {
-
+            //working on
         }
 
 
