@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     float ydirection;
     float yvector;
 
+    int coins;
+
     public bool overworld;
     Rigidbody2D rb;
 
@@ -27,6 +29,8 @@ public class PlayerController : MonoBehaviour
         xspeed = 4f;
         xdirection = 0;
         xvector = 0;
+
+        coins = 0;
 
         yspeed = 4f;
         ydirection = 0;
@@ -46,8 +50,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    
+
     private void Update()
     {
+        
+
+
+
         xdirection = Input.GetAxis("Horizontal");
         xvector = xspeed * xdirection;
 
@@ -59,12 +69,33 @@ public class PlayerController : MonoBehaviour
 
        
     }
-    
+
     //for organization, put other built-in Unity functions here
-    
-    
-    
-    
-    
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("coin")) ; //shouldn't work?????
+        {
+            coins = coins + 1;
+            print("I have " + coins + " Coins!");
+            Destroy(other.gameObject);
+
+
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("collision"))
+        {
+
+        }
+
+
+    }
+
+
+
+
     //after all Unity functions, your own functions can go here
+
 }
