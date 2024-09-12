@@ -85,9 +85,9 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("collision"))
+        if (other.gameObject.CompareTag("collision"));
         {
-            //working on
+            print("Ouch");
         }
 
 
