@@ -11,6 +11,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    GameManager gm;
+
+
     float xspeed;
     float xdirection;
     float xvector;
@@ -19,18 +22,21 @@ public class PlayerController : MonoBehaviour
     float ydirection;
     float yvector;
 
-    int coins;
+    
 
     public bool overworld;
     Rigidbody2D rb;
 
     private void Start()
     {
+
+        gm = FindObjectOfType<GameManager>();
+
         xspeed = 4f;
         xdirection = 0;
         xvector = 0;
 
-        coins = 0;
+        
 
         yspeed = 4f;
         ydirection = 0;
@@ -72,29 +78,22 @@ public class PlayerController : MonoBehaviour
 
     //for organization, put other built-in Unity functions here
 
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("coin")) ; //shouldn't work??????
+        
+        if (other.CompareTag("Coin")) 
         {
-            coins = coins + 1;
-            print("I have " + coins + " Coins!");
+            gm.Coins = gm.Coins + 1;
+            print("I have " + gm.Coins + " Coins!");
             Destroy(other.gameObject);
 
 
+
+
         }
     }
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("collision"));
-        {
-            print("Ouch");
-        }
-
-
-    }
-
-
-
 
     //after all Unity functions, your own functions can go here
 
