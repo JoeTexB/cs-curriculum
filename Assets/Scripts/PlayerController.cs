@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     float yspeed;
     float ydirection;
     float yvector;
-
+     
     
 
     public bool overworld;
@@ -80,20 +80,9 @@ public class PlayerController : MonoBehaviour
 
 
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        
-        if (other.CompareTag("Coin")) 
-        {
-            gm.Coins = gm.Coins + 1;
-            print("I have " + gm.Coins + " Coins!");
-            Destroy(other.gameObject);
-
-
-
-
-        }
-    }
+   
+    
+    
 
     //after all Unity functions, your own functions can go here
 
