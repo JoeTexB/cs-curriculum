@@ -15,8 +15,8 @@ public class Health : MonoBehaviour
     {
         if (other.CompareTag("Spikes")) 
         {
-            gm.Health = gm.Health - 1;
-            print("you health is: "+gm.Health);
+            gm.health = gm.health - 1;
+            print("you health is: "+gm.health);
             
 
 
@@ -34,3 +34,4 @@ public class Health : MonoBehaviour
         
     }
 }
+

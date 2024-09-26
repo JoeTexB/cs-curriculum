@@ -24,8 +24,8 @@ public class CoinsCollect : MonoBehaviour
 
         if (other.CompareTag("Coin"))
         {
-            gm.Coins = gm.Coins + 1;
-            print("I have " + gm.Coins + " Coins!");
+            gm.coins = gm.coins + 1;
+            print("I have " + gm.coins + " Coins!");
             Destroy(other.gameObject);
 
         }
