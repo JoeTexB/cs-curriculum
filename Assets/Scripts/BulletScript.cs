@@ -21,7 +21,11 @@ public class Bullet : MonoBehaviour
     {
       //move towards player  
       transform.position = Vector3.MoveTowards(transform.position, targetPosition, 5 * Time.deltaTime);
-     
+
+      if (transform.position == targetPosition)
+      {
+          Destroy(gameObject);
+      }
     }
 }
 
