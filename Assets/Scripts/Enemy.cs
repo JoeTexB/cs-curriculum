@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Numerics;
 using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 public class Enemy : MonoBehaviour
 {
@@ -29,58 +31,60 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            state = states.chase;
+           
+            
+            if (state == states.patrol && state != states.attack)
+            {
+                state = states.chase;
+                print("Chasing");
+            }
+            
             
             
             PlayerTargetPosition = other.transform.position;
            
-            //entering attack radius
-            if (state == states.chase)
-            {
-                state = states.attack;
-                print("attacking");
-            }
+            
+            
         }
         
     }
-
-    //exiting attack radius
+    
+    //exiting attack radius and returning to proper state
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player")) 
         {
-            if (state == states.attack)
+            print("Player exited radius");
+            if (state == states.chase)
             {
-                state = states.chase;
+                print("returning to patrol");
+                state = states.patrol;
             }
-            
         }
     }
+   
 
 
     // Update is called once per frame
     void Update()
     {
-        //follow waypoints
+        //attacking trigger without radius
+        if (Vector3.Distance(transform.position, PlayerTargetPosition) < 2 && state == states.chase) 
+        {
+            print("Attacking");
+            state = states.attack;
+        }
+        if (Vector3.Distance(transform.position, PlayerTargetPosition) > 2 && state == states.attack)
+        {
+            state = states.chase;
+            print("chase");
+        }
+        
+        
+        //patrol (Follow waypoints)
         if (state == states.patrol)
         {
             transform.position = Vector3.MoveTowards(transform.position, waypoints[num], 2 * Time.deltaTime);
-        }
-
-        //waypoints change
-        if (transform.position == waypoints[num])
-        {
-            num += 1;
-            if (num > 6)
-            {
-                num = 0;
-            }
-        }
-        
-        //attack player
-        if (state == states.attack)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, PlayerTargetPosition, 2 * Time.deltaTime);
         }
 
         //chase player
@@ -90,11 +94,28 @@ public class Enemy : MonoBehaviour
             
         }
 
+        if (state == states.attack)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, PlayerTargetPosition, 2 * Time.deltaTime);
+        }
+       
+        //waypoints change
+        if (transform.position == waypoints[num])
+        {
+            num += 1;
+            if (num > 6)
+            {
+                num = 0;
+            }
+        }
+
+       
+
         //return to patrol
         if (transform.position == PlayerTargetPosition)
         {
             state = states.patrol;
-            
+            print("Target pos reached, returning to patrol");
         }
 
     }
