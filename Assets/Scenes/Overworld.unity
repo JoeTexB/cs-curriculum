@@ -40466,6 +40466,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6293109443206048594, guid: fbdc99957549444bfba281e61d9d218c,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 2015667465}
+    - target: {fileID: 8710938438420667881, guid: fbdc99957549444bfba281e61d9d218c,
+        type: 3}
+      propertyPath: _controller
+      value: 
+      objectReference: {fileID: 2015667464}
     - target: {fileID: 8710938438420667881, guid: fbdc99957549444bfba281e61d9d218c,
         type: 3}
       propertyPath: waypoints.Array.size
@@ -85253,6 +85263,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2015667464 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6293109443206048594, guid: fbdc99957549444bfba281e61d9d218c,
+    type: 3}
+  m_PrefabInstance: {fileID: 959217150}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd8a18f0229a499da6a032e83043ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &2015667465 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2864171262592659787, guid: fbdc99957549444bfba281e61d9d218c,
+    type: 3}
+  m_PrefabInstance: {fileID: 959217150}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2020212485 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4281311786053241907, guid: 69c7343f050914c7787bbbe42c07b5b8,

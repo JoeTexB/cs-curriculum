@@ -11,6 +11,10 @@ public class Enemy : MonoBehaviour
     public List <Vector3> waypoints;
 
     private int num;
+    public TopDown_EnemyAnimator _controller;
+    public Health HealthManager;
+
+    
    
     enum states
     {
@@ -25,6 +29,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         state = states.patrol;
+        HealthManager = FindObjectOfType<Health>();
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -62,7 +67,15 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-   
+
+    //making attack animation frm topdownenemy script and health
+    
+    public void attack()
+    {
+        print("attacking damage");
+        _controller.Attack();
+        HealthManager.takedmg();
+    }
 
 
     // Update is called once per frame
@@ -73,6 +86,7 @@ public class Enemy : MonoBehaviour
         {
             print("Attacking");
             state = states.attack;
+            
         }
         if (Vector3.Distance(transform.position, PlayerTargetPosition) > 2 && state == states.attack)
         {
@@ -97,6 +111,8 @@ public class Enemy : MonoBehaviour
         if (state == states.attack)
         {
             transform.position = Vector3.MoveTowards(transform.position, PlayerTargetPosition, 2 * Time.deltaTime);
+            attack();
+            
         }
        
         //waypoints change

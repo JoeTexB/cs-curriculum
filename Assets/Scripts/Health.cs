@@ -15,32 +15,24 @@ public class Health : MonoBehaviour
     {
         if (other.CompareTag("Spikes")) 
         {
-            print("Touched Spike");
-            gm.health = gm.health - 1;
-            print("you health is: "+gm.health);
-            
-            
-
-
-
-
+            takedmg();
         }    
         if (other.CompareTag("Bullet")) 
         {
-            print("Bullet Hit Player");
-            gm.health = gm.health - 1;
-            print("you health is: "+gm.health);
-            Destroy(other.gameObject);
-
-
-
-
-
+            takedmg();
         } 
 
     }
 
-    // Start is called before the first frame update
+public void takedmg()
+{
+    
+    print("take dmg");
+    gm.health = gm.health - 1;
+    print("you health is: "+gm.health);
+}
+    
+// Start is called before the first frame update
     
     // Update is called once per frame
     void Update()
