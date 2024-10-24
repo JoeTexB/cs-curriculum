@@ -5,6 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     GameManager gm;
+    private float cooldown = 0.7f;
     
     void Start()
     {
@@ -26,10 +27,13 @@ public class Health : MonoBehaviour
 
 public void takedmg()
 {
-    
-    print("take dmg");
-    gm.health = gm.health - 1;
-    print("you health is: "+gm.health);
+    if (cooldown < 0)
+    {
+        print("take dmg");
+        gm.health = gm.health - 1;
+        print("you health is: " + gm.health);
+        cooldown = 0.7f;
+    }
 }
     
 // Start is called before the first frame update
@@ -37,7 +41,7 @@ public void takedmg()
     // Update is called once per frame
     void Update()
     {
-        
+        cooldown -= Time.deltaTime;
     }
 }
 
