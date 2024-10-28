@@ -12,6 +12,10 @@ public class TopDown_AnimatorController : MonoBehaviour
 
     public bool IsAttacking { get; private set; }
 
+    public PlayerController Player;
+
+    
+
     Animator anim;
     SpriteRenderer sprite;
 
@@ -25,6 +29,10 @@ public class TopDown_AnimatorController : MonoBehaviour
         anim.SetBool("IsWalking", false);
         anim.SetInteger("WalkDir", 2);
         sprite.flipX = true;
+
+        //getting player script 
+        Player = FindObjectOfType<PlayerController>();
+
 
     }
 
@@ -78,7 +86,15 @@ public class TopDown_AnimatorController : MonoBehaviour
         {
             anim.SetTrigger("Attack");
             anim.SetBool("IsWalking", false);
+
+            //player attacking
+            Player.PlayerAttack = true;
+
+
         }
+
+        
+        
 
         IsAttacking = anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack");
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Numerics;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
 public class Enemy : MonoBehaviour
@@ -13,6 +14,9 @@ public class Enemy : MonoBehaviour
     private int num;
     public TopDown_EnemyAnimator _controller;
     public Health HealthManager;
+    public int EnemyHealth = 3;
+
+    public GameObject Axel;
 
     
    
@@ -125,7 +129,16 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        
+           
        
+        //If enemy dies
+        if (EnemyHealth < 1)
+        {
+            Instantiate(Axel, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+        
 
         //return to patrol
         if (transform.position == PlayerTargetPosition)
@@ -135,5 +148,6 @@ public class Enemy : MonoBehaviour
         }
 
     }
+    
 }
-
+        
