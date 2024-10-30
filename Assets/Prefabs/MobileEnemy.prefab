@@ -124,7 +124,7 @@ MonoBehaviour:
   _controller: {fileID: 0}
   HealthManager: {fileID: 0}
   EnemyHealth: 3
-  Axel: {fileID: 8928701524657299959, guid: 2d2bc4cf5fda5c740b9cedcdbc7c87ac, type: 3}
+  Axe: {fileID: 8928701524657299959, guid: 2d2bc4cf5fda5c740b9cedcdbc7c87ac, type: 3}
   PlayerTargetPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &6074370204116875197
 GameObject:

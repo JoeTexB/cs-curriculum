@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     public Health HealthManager;
     public int EnemyHealth = 3;
 
-    public GameObject Axel;
+    public GameObject Axe;
 
     
    
@@ -135,7 +135,7 @@ public class Enemy : MonoBehaviour
         //If enemy dies
         if (EnemyHealth < 1)
         {
-            Instantiate(Axel, transform.position, Quaternion.identity);
+            Instantiate(Axe, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
         

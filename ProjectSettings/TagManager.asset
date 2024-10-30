@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Axe
   - Spikes
+  - Bullet
+  - WoodDoor
   layers:
   - Default
   - TransparentFX

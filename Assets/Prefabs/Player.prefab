@@ -134,6 +134,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animShovel: {fileID: 9100000, guid: 1ccf3beb0c6f246e99cc9a927f1fd12e, type: 2}
   animAxe: {fileID: 9100000, guid: 8cf1007ae09a548dfb24a581133c15db, type: 2}
+  Player: {fileID: 0}
+  usingaxe: 0
 --- !u!1 &8049566408774423969
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,6 +258,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overworld: 1
+  Enemy: {fileID: 0}
+  tda: {fileID: 0}
+  PlayerAttack: 0
+  WoodDoor: {fileID: 0}
 --- !u!114 &7447467940583624619
 MonoBehaviour:
   m_ObjectHideFlags: 0

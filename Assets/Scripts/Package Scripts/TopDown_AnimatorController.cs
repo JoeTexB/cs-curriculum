@@ -14,6 +14,7 @@ public class TopDown_AnimatorController : MonoBehaviour
 
     public PlayerController Player;
 
+    public bool usingaxe; 
     
 
     Animator anim;
@@ -33,11 +34,15 @@ public class TopDown_AnimatorController : MonoBehaviour
         //getting player script 
         Player = FindObjectOfType<PlayerController>();
 
+        usingaxe = false;
+        print("UsingAxe:" + usingaxe);
+
 
     }
 
     private void Update()
     {
+        
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
             if (Input.GetAxis("Horizontal") != 0 && Input.GetAxis("Vertical") != 0)
@@ -89,6 +94,7 @@ public class TopDown_AnimatorController : MonoBehaviour
 
             //player attacking
             Player.PlayerAttack = true;
+            print("PlayAttack:" + Player.PlayerAttack);
 
 
         }
@@ -103,7 +109,10 @@ public class TopDown_AnimatorController : MonoBehaviour
     // Call this function when the player picks up the axe.
     public void SwitchToAxe()
     {
+        print("Switched to axe");
         anim.runtimeAnimatorController = animAxe;
+        usingaxe = true;
+        print("UsingAxe:" + usingaxe);
     }
 
     // Call this function to set the weapon back to a shovel.
