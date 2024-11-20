@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     public TopDown_EnemyAnimator _controller;
     public Health HealthManager;
     public int EnemyHealth = 3;
+    public bool overworld;
 
     public GameObject Axe;
 
@@ -34,6 +35,9 @@ public class Enemy : MonoBehaviour
     {
         state = states.patrol;
         HealthManager = FindObjectOfType<Health>();
+        
+        GetComponentInChildren<TopDown_AnimatorController>().enabled = overworld;
+        GetComponentInChildren<Platformer_AnimatorController>().enabled = !overworld;
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -120,18 +124,28 @@ public class Enemy : MonoBehaviour
         }
        
         //waypoints change
+        if (overworld)
+        {
+            if (transform.position == waypoints[num])
+            {
+                num += 1;
+                if (num > 6)
+                {
+                    num = 0;
+                }
+            }
+        }
+        else 
         if (transform.position == waypoints[num])
         {
             num += 1;
-            if (num > 6)
+            if (num > 1)
             {
                 num = 0;
             }
         }
 
-        
-           
-       
+
         //If enemy dies
         if (EnemyHealth < 1)
         {
