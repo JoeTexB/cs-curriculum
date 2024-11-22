@@ -14,9 +14,9 @@ public class PlayerController : MonoBehaviour
     GameManager gm;
 
 
-    float xspeed;
+    public float xspeed;
     float xdirection;
-    float xvector;
+    public float xvector;
 
     float yspeed;
     float ydirection;
