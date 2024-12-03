@@ -10,7 +10,7 @@ public class Platform : MonoBehaviour
     private int num;
     PlayerController pl;
     public Vector3 PlatformXDifference;
-    public int PlatformPositive;
+    public int platformDirection;
     public Vector3 platformposoffset;
     
     // Start is called before the first frame update
@@ -42,21 +42,29 @@ public class Platform : MonoBehaviour
         
         //all wip below
         PlatformXDifference.Set(waypoints[0].x - waypoints[1].x, 0, 0);
+        PlatformXDifference.Set(transform.position.x - waypoints[num].x , 0, 0);
         if (PlatformXDifference.x < 0)
         {
-            PlatformPositive = -1;
+            
+            platformDirection = 1;
+            print("Platform positive" + platformDirection);
         }
 
         if (PlatformXDifference.x > 0)
         {
-            PlatformPositive = 1;
+            
+            platformDirection = -1;
+            print("Platform negative" + platformDirection);
         }
     }
     private void OnCollisionStay2D(Collision2D other)
     {
+        
         if (other.gameObject.CompareTag("Player"))
         {
-            pl.transform.position.Set(transform.position.x, pl.transform.position.y, pl.transform.position.z);
+            
+            pl.transform.Translate(0.055f * platformDirection, 0, 0);
+            print("Cahnged by:");
         }
     } 
 }
