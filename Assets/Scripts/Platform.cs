@@ -47,14 +47,14 @@ public class Platform : MonoBehaviour
         {
             
             platformDirection = 1;
-            print("Platform positive" + platformDirection);
+            //print("Platform positive" + platformDirection);
         }
 
         if (PlatformXDifference.x > 0)
         {
             
             platformDirection = -1;
-            print("Platform negative" + platformDirection);
+            //print("Platform negative" + platformDirection);
         }
     }
     private void OnCollisionStay2D(Collision2D other)
@@ -63,8 +63,9 @@ public class Platform : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             
-            pl.transform.Translate(0.055f * platformDirection, 0, 0);
-            print("Cahnged by:");
+            float movement = 0.055f * platformDirection;
+            pl.transform.Translate(movement, 0, 0);
+            //print(movement);
         }
     } 
 }
