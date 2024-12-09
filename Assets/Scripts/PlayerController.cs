@@ -13,7 +13,9 @@ public class PlayerController : MonoBehaviour
 {
     GameManager gm;
 
-
+    public bool phase;
+    public float phaseTimer;
+    public SpriteRenderer playerRenderer;
     public float xspeed;
     float xdirection;
     public float xvector;
@@ -43,8 +45,8 @@ public class PlayerController : MonoBehaviour
         Enemy = FindObjectOfType<Enemy>();
 
         tda = FindObjectOfType<TopDown_AnimatorController>();
-        
-        
+
+        playerRenderer = GetComponentInChildren<SpriteRenderer>();
 
         xspeed = 4f;
         xdirection = 0;
@@ -78,9 +80,21 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        
+        //color change on lever
+        phaseTimer -= Time.deltaTime;
+        if (phaseTimer <= 0)
+        {
+            phase = false;
+        }
 
-
+        if (phase)
+        {
+            playerRenderer.color = new Color(1, 1, 1, .1f);
+        }
+        if (phase == false)
+        {
+            playerRenderer.color = new Color(1, 1, 1, 1f);
+        }
 
         xdirection = Input.GetAxis("Horizontal");
         xvector = xspeed * xdirection;

@@ -12,12 +12,14 @@ public class Platform : MonoBehaviour
     public Vector3 PlatformXDifference;
     public int platformDirection;
     public Vector3 platformposoffset;
+    public SpriteRenderer WallRenderer;
     
     // Start is called before the first frame update
     void Start()
     {
         Moving = true;
         pl = FindObjectOfType<PlayerController>();
+        WallRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -38,6 +40,20 @@ public class Platform : MonoBehaviour
             {
                 num = 0;
             }
+        }
+
+        //invs so player can't use platforms
+        if (pl.phase)
+        {
+            //it's fine
+            GetComponent<BoxCollider2D> ().enabled = false;
+            
+            WallRenderer.color = new Color(1, 1, 1, .1f);
+        }
+        if (pl.phase == false)
+        {
+            WallRenderer.color = new Color(1, 1, 1, 1f);
+            GetComponent<BoxCollider2D> ().enabled = true;
         }
         
         //all wip below

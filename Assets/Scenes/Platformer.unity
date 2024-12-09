@@ -338,6 +338,7 @@ GameObject:
   - component: {fileID: 323380218}
   - component: {fileID: 323380217}
   - component: {fileID: 323380216}
+  - component: {fileID: 323380219}
   m_Layer: 0
   m_Name: Invs Wall
   m_TagString: Untagged
@@ -457,6 +458,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &323380219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323380215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c57bb2965664ba4aa78cfabe342a0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pl: {fileID: 0}
+  WallRenderer: {fileID: 0}
 --- !u!1001 &330372135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -873,6 +888,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2208468270872032134, guid: bc139d8bb8dee439490b05712200dfee,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3557327843128524543, guid: bc139d8bb8dee439490b05712200dfee,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5774960653562304022, guid: bc139d8bb8dee439490b05712200dfee,
         type: 3}
       propertyPath: overworld

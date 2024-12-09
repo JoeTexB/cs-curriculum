@@ -6,17 +6,23 @@ public class Health : MonoBehaviour
 {
     GameManager gm;
     private float cooldown = 0.7f;
+    public PlayerController pl;
     
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
+        pl = FindObjectOfType<PlayerController>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Spikes")) 
         {
-            takedmg();
+            if (pl.phase == false)
+            { 
+                takedmg();
+            }
+              
         }    
         if (other.CompareTag("Bullet")) 
         {
