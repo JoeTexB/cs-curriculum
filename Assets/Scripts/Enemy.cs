@@ -36,8 +36,19 @@ public class Enemy : MonoBehaviour
         state = states.patrol;
         HealthManager = FindObjectOfType<Health>();
         
-        GetComponentInChildren<TopDown_AnimatorController>().enabled = overworld;
-        GetComponentInChildren<Platformer_AnimatorController>().enabled = !overworld;
+        GetComponent<Rigidbody2D>().gravityScale = 0f;
+        
+        
+        //if (overworld)
+        //{
+        //     GetComponent<Rigidbody2D>().gravityScale = 0f;
+        //}
+        //else
+        //{
+            
+        //    GetComponent<Rigidbody2D>().gravityScale = 1f;
+        //}
+        
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -149,6 +160,7 @@ public class Enemy : MonoBehaviour
         //If enemy dies
         if (EnemyHealth < 1)
         {
+            print("Enemy die");
             Instantiate(Axe, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

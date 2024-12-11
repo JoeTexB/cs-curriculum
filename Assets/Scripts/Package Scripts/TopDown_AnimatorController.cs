@@ -89,12 +89,13 @@ public class TopDown_AnimatorController : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
+            
             anim.SetTrigger("Attack");
             anim.SetBool("IsWalking", false);
 
             //player attacking
             Player.PlayerAttack = true;
-            print("PlayAttack:" + Player.PlayerAttack);
+            print("Player Attack:" + Player.PlayerAttack);
 
 
         }

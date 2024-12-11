@@ -90,10 +90,12 @@ public class PlayerController : MonoBehaviour
         if (phase)
         {
             playerRenderer.color = new Color(1, 1, 1, .1f);
+            xspeed = 8f;
         }
         if (phase == false)
         {
             playerRenderer.color = new Color(1, 1, 1, 1f);
+            xspeed = 4f;
         }
 
         xdirection = Input.GetAxis("Horizontal");
@@ -127,6 +129,7 @@ public class PlayerController : MonoBehaviour
             //damaging enemy (edited "==" statement, if don't work revert to "=") 
             if (PlayerAttack == true)
             {
+                //print("Player Attacking: " + PlayerAttack);
                 if (EnemyDmgCoolDown < 0)
                 {
                     Enemy.EnemyHealth -= 1;

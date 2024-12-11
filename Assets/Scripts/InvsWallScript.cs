@@ -18,7 +18,7 @@ public class InvsWallScript : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        print("working");
+        //print("working");
         if (pl.phase)
         {
             //it's fine
