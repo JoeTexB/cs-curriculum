@@ -6,14 +6,16 @@ public class Platformer_AnimatorController : MonoBehaviour
 {
     public bool IsAttacking { get; private set; }
 
-    Animator anim;
-    SpriteRenderer sprite;
+    [SerializeField] private Animator anim;
+    [SerializeField] private SpriteRenderer sprite;
+    [SerializeField] private PlayerController player;
 
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+        player = FindObjectOfType<PlayerController>();
 
         //start off facing to the right.
         anim.SetBool("IsWalking", false);
@@ -46,6 +48,8 @@ public class Platformer_AnimatorController : MonoBehaviour
         {
             anim.SetTrigger("Attack");
             anim.SetBool("IsWalking", false);
+
+            player.PlayerAttack = true;
         }
 
         IsAttacking = anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack");

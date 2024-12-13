@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
         gm = FindObjectOfType<GameManager>();
 
-        Enemy = FindObjectOfType<Enemy>();
+        //Enemy = FindObjectOfType<Enemy>();
 
         tda = FindObjectOfType<TopDown_AnimatorController>();
 
@@ -124,12 +124,15 @@ public class PlayerController : MonoBehaviour
     
     private void OnTriggerStay2D(Collider2D other)
     {
+        //print("Touching ");
         if (other.gameObject.CompareTag("Enemy"))
         {
-            //damaging enemy (edited "==" statement, if don't work revert to "=") 
-            if (PlayerAttack == true)
+            Enemy = other.gameObject.GetComponent<Enemy>();
+            //print("Touching enemy");
+            
+            if (PlayerAttack)
             {
-                //print("Player Attacking: " + PlayerAttack);
+               
                 if (EnemyDmgCoolDown < 0)
                 {
                     Enemy.EnemyHealth -= 1;

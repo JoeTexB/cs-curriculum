@@ -55,6 +55,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            //print("Player found");
            
             
             if (state == states.patrol && state != states.attack)
@@ -100,6 +101,15 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        
+        if (EnemyHealth <= 0)
+        {
+            print("Enemy die");
+            Instantiate(Axe, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+        
         //attacking trigger without radius
         if (Vector3.Distance(transform.position, PlayerTargetPosition) < 2 && state == states.chase) 
         {
@@ -157,13 +167,13 @@ public class Enemy : MonoBehaviour
         }
 
 
-        //If enemy dies
-        if (EnemyHealth < 1)
-        {
-            print("Enemy die");
-            Instantiate(Axe, transform.position, Quaternion.identity);
-            Destroy(gameObject);
-        }
+        
+        //if (EnemyHealth ==0)
+        //{
+        //    print("Enemy die");
+        //    Instantiate(Axe, transform.position, Quaternion.identity);
+        //    Destroy(this);
+        //}
         
 
         //return to patrol

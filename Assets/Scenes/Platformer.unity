@@ -974,7 +974,7 @@ PrefabInstance:
     - target: {fileID: 2399072710900510365, guid: fbdc99957549444bfba281e61d9d218c,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3736838050167469039, guid: fbdc99957549444bfba281e61d9d218c,
         type: 3}
@@ -7827,7 +7827,7 @@ PrefabInstance:
     - target: {fileID: 2399072710900510365, guid: fbdc99957549444bfba281e61d9d218c,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3736838050167469039, guid: fbdc99957549444bfba281e61d9d218c,
         type: 3}
@@ -8979,7 +8979,7 @@ PrefabInstance:
     - target: {fileID: 2399072710900510365, guid: fbdc99957549444bfba281e61d9d218c,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3736838050167469039, guid: fbdc99957549444bfba281e61d9d218c,
         type: 3}
@@ -9046,6 +9046,11 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 1861237505}
+    - target: {fileID: 8358935624472700692, guid: fbdc99957549444bfba281e61d9d218c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8710938438420667881, guid: fbdc99957549444bfba281e61d9d218c,
         type: 3}
       propertyPath: _controller

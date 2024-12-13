@@ -101,7 +101,8 @@ public class TopDown_AnimatorController : MonoBehaviour
         }
 
         
-        
+
+
 
         IsAttacking = anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack");
 
