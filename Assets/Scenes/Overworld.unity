@@ -677,7 +677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4790d855844fe4cc59aebc4a06b5e93d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: 0
+  scene: 2
 --- !u!483693784 &445130150
 TilemapRenderer:
   m_ObjectHideFlags: 0

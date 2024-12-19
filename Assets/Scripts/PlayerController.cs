@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
 
         EnemyDmgCoolDown -= Time.deltaTime;
         AttackCoolDown -= Time.deltaTime;
-
+        
         if (PlayerAttack == true)
         {
             if (AttackCoolDown < -0.5)
@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
                 AttackCoolDown = 1f;
             }
         }
-
+        
         // UpdateGroundedStatus();
         //Debug.Log(isGrounded);
 
@@ -148,7 +148,7 @@ public class PlayerController : MonoBehaviour
             // UpdateGroundedStatus();
 
             //  if (Input.GetKey(KeyCode.Space) && jumpcooldown < 0 && isGrounded == true)
-            {
+            //{
                 // jumpcooldown = 1 * Time.deltaTime;
                 //print("Space");
                 //  if (Physics2D.Raycast(
@@ -171,7 +171,7 @@ public class PlayerController : MonoBehaviour
 
                 // }
 
-            }
+            //}
 
             //void UpdateGroundedStatus()
             //{
@@ -183,72 +183,9 @@ public class PlayerController : MonoBehaviour
             //{
             //    return new Vector2(transform.position.x + col.bounds.extents.x, transform.position.y - col.bounds.extents.y);
             //}
-            void OnTriggerStay2D(Collider2D other)
-            {
-                //print("Touching ");
-                if (other.gameObject.CompareTag("Enemy"))
-                {
-                    Enemy = other.gameObject.GetComponent<Enemy>();
-                    
-                    //print("Touching enemy");
+            
 
-                    if (PlayerAttack)
-                    {
-
-                        if (EnemyDmgCoolDown < 0)
-                        {
-                            Enemy.EnemyHealth -= 1;
-                            EnemyDmgCoolDown = 1f;
-                            print("Enemy health:" + Enemy.EnemyHealth);
-                        }
-
-                    }
-
-                }
-
-                //picking up axe
-                if (other.gameObject.CompareTag("Axe"))
-                {
-                    //Making pause before cooldown
-                    if (EnemyDmgCoolDown < -1)
-                    {
-                        tda.SwitchToAxe();
-                        Destroy(other.gameObject);
-                    }
-
-                }
-
-
-            }
-
-            void OnCollisionStay2D(Collision2D other)
-            {
-                //colliding with door
-                if (other.gameObject.CompareTag("WoodDoor"))
-                {
-                    print("door work 1");
-                    if (tda.usingaxe == true)
-                    {
-                        print("door work 2");
-                        if (PlayerAttack == true)
-                        {
-                            print("door work 3");
-                            print("Destroying wooden door");
-                            Destroy(other.gameObject);
-                        }
-
-                    }
-                }
-            }
-
-            void OnTriggerExit2D(Collider2D other)
-            {
-                if (other.gameObject.CompareTag("Enemy"))
-                {
-                    PlayerAttack = false;
-                    print("PlayAttack:" + PlayerAttack);
-                }
-            }
+            
 
 
 
@@ -262,6 +199,84 @@ public class PlayerController : MonoBehaviour
 
             //after all Unity functions, your own functions can go here
 
+            
+        }
+        if (Input.GetKey(KeyCode.H))
+        {
+            if (gm.coins>0)
+            {
+                gm.health += 2;
+                gm.coins -= 1;
+            }
+
+            
+        }
+    }
+    
+    void OnTriggerStay2D(Collider2D other)
+    {
+        //print("Touching ");
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Enemy = other.gameObject.GetComponent<Enemy>();
+                    
+            //print("Touching enemy");
+
+            if (PlayerAttack)
+            {
+
+                if (EnemyDmgCoolDown < 0)
+                {
+                    Enemy.EnemyHealth -= 1;
+                    EnemyDmgCoolDown = 1f;
+                    print("Enemy health:" + Enemy.EnemyHealth);
+                }
+
+            }
+
+        }
+
+        //picking up axe
+        if (other.gameObject.CompareTag("Axe"))
+        {
+            //Making pause before cooldown
+            if (EnemyDmgCoolDown < -1)
+            {
+                tda.SwitchToAxe();
+                Destroy(other.gameObject);
+            }
+
+        }
+
+
+    }
+
+    void OnCollisionStay2D(Collision2D other)
+    {
+        //colliding with door
+        if (other.gameObject.CompareTag("WoodDoor"))
+        {
+            print("door work 1");
+            if (tda.usingaxe == true)
+            {
+                print("door work 2");
+                if (PlayerAttack == true)
+                {
+                    print("door work 3");
+                    print("Destroying wooden door");
+                    Destroy(other.gameObject);
+                }
+
+            }
+        }
+    }
+    
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            PlayerAttack = false;
+            print("PlayAttack:" + PlayerAttack);
         }
     }
 }
